@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="lib/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 數據綁定 -->
+    <div id="app">
+      <h1>hi {{ name }}</h1>
+    </div>
+
+    <!-- v-bind -->
+    <div id="link1">
+      <a v-bind:href="link">鏈結</a>
+    </div>
+
+    <!-- v-for -->
+    <div id="todoList">
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index">
+          {{ index + 1 }}. {{ todo }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-for + v-bind -->
+    <div id="todoCheckList">
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index">
+          <input type="checkbox" v-bind:checked="todo.check" />
+          {{ index + 1 }}. {{ todo.name }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-if , v-show -->
+    <div id="todoIfList">
+      <p v-if="todos.length === 0">沒有待辦事項</p>
+      <h2 v-else-if="todos.length===1">
+        <input type="checkbox" v-bind:checked="todos[0].check" />
+        {{todos[0].name}}
+      </h2>
+      <ul v-else>
+        <li v-for="(todo, index) in todos">
+          <input type="checkbox" v-bind:checked="todo.check" />
+          {{ index + 1 }}. {{ todo.name }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-on:click -->
+    <div id="onClick">
+      <p>Q1 : v-on:click 問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="showAnswer = !showAnswer">
+        {{showAnswer ? "隱藏" : "顯示"}}答案
+      </button>
+    </div>
+
+    <!-- computed -->
+    <div id="computed">
+      <p>Q1 : computed問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="showAnswer = !showAnswer">{{ label }}</button>
+    </div>
+
+    <!-- methods -->
+    <div id="methods">
+      <p>Q1 : methods問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="toggleShowAnswer">{{ label }}</button>
+    </div>
+
+    <!-- watch -->
+    <div id="watch">
+      <p>Q1 : watch問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="toggleShowAnswer">{{ label }}</button>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
