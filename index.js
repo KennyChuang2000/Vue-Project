@@ -135,3 +135,18 @@ const watch = Vue.createApp({
     },
 });
 watch.mount("#watch");
+
+const formEvent = Vue.createApp({
+    data() {
+        return {
+            inputText: ""
+        };
+    },
+    methods: {
+        handleInput(e) {
+            this.inputText = e.target.value;
+            console.log("輸入的文字:", this.inputText);
+        }
+    }
+});
+formEvent.mount("#formEvent");

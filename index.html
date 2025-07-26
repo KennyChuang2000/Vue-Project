@@ -82,6 +82,14 @@
       <button @click="toggleShowAnswer">{{ label }}</button>
     </div>
 
+    <div id="formEvent">
+      <label for="inputText">輸入文字：</label>
+      <input type="text" id="inputText" @input="handleInput" />
+      <div id="result">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
