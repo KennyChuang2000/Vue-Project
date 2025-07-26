@@ -150,3 +150,20 @@ const formEvent = Vue.createApp({
     }
 });
 formEvent.mount("#formEvent");
+
+const vModel = Vue.createApp({
+    data() {
+        return {
+            inputText: ""
+        };
+    },
+    methods: {
+
+        resetUsername() {
+            this.inputText = "";
+            console.log("重置輸入框");
+        }
+
+    }
+});
+vModel.mount("#vModel");

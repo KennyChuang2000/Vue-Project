@@ -82,10 +82,36 @@
       <button @click="toggleShowAnswer">{{ label }}</button>
     </div>
 
+    <!-- @input -->
     <div id="formEvent">
-      <label for="inputText">輸入文字：</label>
+      <label for="inputText"> @input 輸入文字：</label>
       <input type="text" id="inputText" @input="handleInput" />
       <div id="result">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
+    <!-- @input 雙向綁定 -->
+    <div id="formEvent2">
+      <label for="inputText2"> @input 雙向綁定輸入文字：</label>
+      <input
+        :value="inputText"
+        type="text"
+        id="inputText2"
+        @input="handleInput"
+      />
+      <button @click="resetUsername">重製</button>
+      <div id="result2">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
+    <!-- @input 雙向綁定 -->
+    <div id="vModel">
+      <label for="inputText3">vModel 雙向綁定輸入文字：</label>
+      <input type="text" id="inputText3" v-model="inputText" />
+      <button @click="resetUsername">重製</button>
+      <div id="result3">
         <p>輸入的文字是：{{ inputText }}</p>
       </div>
     </div>
