@@ -180,3 +180,29 @@ const otherForm = Vue.createApp({
     },
 });
 otherForm.mount("#otherForm");
+
+const otherFormSubmit = Vue.createApp({
+    data() {
+        return {
+            username: "",
+            gender: "",
+            interests: [],
+            occupation: "",
+            intro: "",
+        };
+    },
+    methods: {
+        handleSubmit() {
+            // console.log("123");
+            console.log("提交的數據:",
+                this.username,
+                this.gender,
+                this.interests,
+                this.occupation,
+                this.intro
+            );
+        }
+    },
+});
+otherFormSubmit.mount("#otherFormSubmit");
+
