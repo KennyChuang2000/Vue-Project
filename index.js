@@ -167,3 +167,16 @@ const vModel = Vue.createApp({
     }
 });
 vModel.mount("#vModel");
+
+const otherForm = Vue.createApp({
+    data() {
+        return {
+            username: "",
+            gender: "",
+            interests: [],
+            occupation: "",
+            intro: "",
+        };
+    },
+});
+otherForm.mount("#otherForm");
