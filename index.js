@@ -206,3 +206,21 @@ const otherFormSubmit = Vue.createApp({
 });
 otherFormSubmit.mount("#otherFormSubmit");
 
+const styleAsVue = Vue.createApp({
+    data() {
+        return {
+            fontSize: 16,
+        }
+    },
+    computed: {
+        pStyle() {
+            return {
+                fontSize: this.fontSize + "px",
+                color: "red",
+            };
+        },
+    },
+});
+styleAsVue.mount("#styleAsVue");
+
+

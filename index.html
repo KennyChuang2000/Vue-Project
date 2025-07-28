@@ -261,6 +261,12 @@
       </div>
     </div>
 
+    <div id="styleAsVue">
+      <p :style="pStyle">這是段落樣式</p>
+      <button class="btn increase" @click="fontSize+=3">變大</button>
+      <button class="btn decrease" @click="fontSize-=3">縮小</button>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
