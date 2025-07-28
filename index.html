@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="lib/vue.global.js"></script>
   </head>
   <body>
@@ -261,10 +261,18 @@
       </div>
     </div>
 
+    <!--  透過Vue data 動態設定style屬性 -->
     <div id="styleAsVue">
-      <p :style="pStyle">這是段落樣式</p>
+      <p :style="pStyle">這是style段落樣式</p>
       <button class="btn increase" @click="fontSize+=3">變大</button>
       <button class="btn decrease" @click="fontSize-=3">縮小</button>
+    </div>
+
+    <!-- 透過Vue data 動態設定class屬性 -->
+    <div id="classAsVue">
+      <p :class="[textClass,stateClass,{hide : isHidden}]">這是class段落樣式</p>
+      <button class="btn show" @click="isHidden=!isHidden">{{btnText}}</button>
+      <!-- <button class="btn decrease" @click="fontSize-=3">縮小</button> -->
     </div>
 
     <script src="index.js"></script>

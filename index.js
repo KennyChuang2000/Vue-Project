@@ -223,4 +223,20 @@ const styleAsVue = Vue.createApp({
 });
 styleAsVue.mount("#styleAsVue");
 
+const classAsVue = Vue.createApp({
+    data() {
+        return {
+            textClass: "text-blue",
+            stateClass: "danger",
+            isHidden: false,
+        }
+    },
+    computed: {
+        btnText() {
+            return this.isHidden ? "顯示" : "隱藏";
+        },
+    },
+});
+classAsVue.mount("#classAsVue");
+
 
