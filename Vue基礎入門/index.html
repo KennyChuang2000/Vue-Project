@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="lib/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 數據綁定 -->
+    <div id="app">
+      <h1>hi {{ name }}</h1>
+    </div>
+
+    <!-- v-bind -->
+    <div id="link1">
+      <a v-bind:href="link">鏈結</a>
+    </div>
+
+    <!-- v-for -->
+    <div id="todoList">
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index">
+          {{ index + 1 }}. {{ todo }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-for + v-bind -->
+    <div id="todoCheckList">
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index">
+          <input type="checkbox" v-bind:checked="todo.check" />
+          {{ index + 1 }}. {{ todo.name }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-if , v-show -->
+    <div id="todoIfList">
+      <p v-if="todos.length === 0">沒有待辦事項</p>
+      <h2 v-else-if="todos.length===1">
+        <input type="checkbox" v-bind:checked="todos[0].check" />
+        {{todos[0].name}}
+      </h2>
+      <ul v-else>
+        <li v-for="(todo, index) in todos">
+          <input type="checkbox" v-bind:checked="todo.check" />
+          {{ index + 1 }}. {{ todo.name }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- v-on:click -->
+    <div id="onClick">
+      <p>Q1 : v-on:click 問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="showAnswer = !showAnswer">
+        {{showAnswer ? "隱藏" : "顯示"}}答案
+      </button>
+    </div>
+
+    <!-- computed -->
+    <div id="computed">
+      <p>Q1 : computed問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="showAnswer = !showAnswer">{{ label }}</button>
+    </div>
+
+    <!-- methods -->
+    <div id="methods">
+      <p>Q1 : methods問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="toggleShowAnswer">{{ label }}</button>
+    </div>
+
+    <!-- watch -->
+    <div id="watch">
+      <p>Q1 : watch問題</p>
+      <p v-if="showAnswer === true">Answer</p>
+      <button @click="toggleShowAnswer">{{ label }}</button>
+    </div>
+
+    <!-- @input -->
+    <div id="formEvent">
+      <label for="inputText"> @input 輸入文字：</label>
+      <input type="text" id="inputText" @input="handleInput" />
+      <div id="result">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
+    <!-- @input 雙向綁定 -->
+    <div id="formEvent2">
+      <label for="inputText2"> @input 雙向綁定輸入文字：</label>
+      <input
+        :value="inputText"
+        type="text"
+        id="inputText2"
+        @input="handleInput"
+      />
+      <button @click="resetUsername">重製</button>
+      <div id="result2">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
+    <!-- @input 雙向綁定 -->
+    <div id="vModel">
+      <label for="inputText3">vModel 雙向綁定輸入文字：</label>
+      <input type="text" id="inputText3" v-model="inputText" />
+      <button @click="resetUsername">重製</button>
+      <div id="result3">
+        <p>輸入的文字是：{{ inputText }}</p>
+      </div>
+    </div>
+
+    <!-- 其他常用表單綁定 -->
+    <label>-------------------------------------</label>
+
+    <div id="otherForm">
+      <label for="otherForm">詳細表單</label>
+      <div class="form">
+        <div>
+          <label for="username">用户名：</label>
+          <input id="username" type="text" v-model="username" />
+        </div>
+        <div>
+          <label for="gender">性别：</label>
+          <div id="gender" class="radio-group">
+            <input
+              name="gender"
+              type="radio"
+              value="male"
+              v-model="gender"
+            /><span>男</span>
+            <input
+              name="gender"
+              type="radio"
+              value="female"
+              v-model="gender"
+            /><span>女</span>
+          </div>
+        </div>
+        <label for="interest">興趣：</label>
+        <div id="interest" class="checkbox-group">
+          <input
+            type="checkbox"
+            name="interests"
+            value="frontend"
+            v-model="interests"
+          /><span>前端</span>
+          <input
+            type="checkbox"
+            name="interests"
+            value="backend"
+            v-model="interests"
+          /><span>後端</span>
+          <input
+            type="checkbox"
+            name="interests"
+            value="fullstack"
+            v-model="interests"
+          /><span>全端</span>
+        </div>
+        <div>
+          <label for="occupation">職業：</label>
+          <select name="occupation" id="occupation" v-model="occupation">
+            <option value="frontend">前端工程师</option>
+            <option value="backend">後端工程师</option>
+            <option value="fullstack">全端工程师</option>
+          </select>
+        </div>
+        <div>
+          <label for="intro">自我介绍：</label>
+          <textarea id="intro" rows="10" v-model="intro"></textarea>
+        </div>
+      </div>
+      <div class="result">
+        <ul>
+          <li>用户名： {{ username }}</li>
+          <li>性别：{{ gender }}</li>
+          <li>興趣：{{ interests }}</li>
+          <li>職業：{{ occupation }}</li>
+          <li>自我介绍： {{ intro }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 表單提交事件處理 -->
+    <label>-------------------------------------</label>
+
+    <div id="otherFormSubmit">
+      <label for="otherForm">詳細表單Submit</label>
+      <form class="form" @submit.prevent="handleSubmit">
+        <div>
+          <label for="username">用户名：</label>
+          <input id="username" type="text" v-model="username" />
+        </div>
+        <div>
+          <label for="gender">性别：</label>
+          <div id="gender" class="radio-group">
+            <input
+              name="gender"
+              type="radio"
+              value="male"
+              v-model="gender"
+            /><span>男</span>
+            <input
+              name="gender"
+              type="radio"
+              value="female"
+              v-model="gender"
+            /><span>女</span>
+          </div>
+        </div>
+        <label for="interest">興趣：</label>
+        <div id="interest" class="checkbox-group">
+          <input
+            type="checkbox"
+            name="interests"
+            value="frontend"
+            v-model="interests"
+          /><span>前端</span>
+          <input
+            type="checkbox"
+            name="interests"
+            value="backend"
+            v-model="interests"
+          /><span>後端</span>
+          <input
+            type="checkbox"
+            name="interests"
+            value="fullstack"
+            v-model="interests"
+          /><span>全端</span>
+        </div>
+        <div>
+          <label for="occupation">職業：</label>
+          <select name="occupation" id="occupation" v-model="occupation">
+            <option value="frontend">前端工程师</option>
+            <option value="backend">後端工程师</option>
+            <option value="fullstack">全端工程师</option>
+          </select>
+        </div>
+        <div>
+          <label for="intro">自我介绍：</label>
+          <textarea id="intro" rows="10" v-model="intro"></textarea>
+        </div>
+        <button type="submit">提交</button>
+      </form>
+      <div class="result">
+        <ul>
+          <li>用户名： {{ username }}</li>
+          <li>性别：{{ gender }}</li>
+          <li>興趣：{{ interests }}</li>
+          <li>職業：{{ occupation }}</li>
+          <li>自我介绍： {{ intro }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!--  透過Vue data 動態設定style屬性 -->
+    <div id="styleAsVue">
+      <p :style="pStyle">這是style段落樣式</p>
+      <button class="btn increase" @click="fontSize+=3">變大</button>
+      <button class="btn decrease" @click="fontSize-=3">縮小</button>
+    </div>
+
+    <!-- 透過Vue data 動態設定class屬性 -->
+    <div id="classAsVue">
+      <p :class="[textClass,stateClass,{hide : isHidden}]">這是class段落樣式</p>
+      <button class="btn show" @click="isHidden=!isHidden">{{btnText}}</button>
+      <!-- <button class="btn decrease" @click="fontSize-=3">縮小</button> -->
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
