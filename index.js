@@ -6,3 +6,17 @@ const vhtml = Vue.createApp({
     }
 });
 vhtml.mount("#vhtml");
+
+const vonce = Vue.createApp({
+    data() {
+        return {
+            list: [1, 2, 3]
+        }
+    },
+    methods: {
+        addList() {
+            this.list.push(this.list.length + 1);
+        }
+    },
+});
+vonce.mount("#vonce");
