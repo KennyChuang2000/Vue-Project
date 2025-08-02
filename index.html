@@ -10,7 +10,7 @@
   <body>
     <!-- v-html -->
     <div id="vhtml">
-      <lable>v-html 顯示html content內容</lable>
+      <label>v-html 顯示html content內容</label>
       <article id="htmlContent" v-html="content"></article>
     </div>
 
@@ -20,6 +20,15 @@
       <p>非vonce list.length={{list.length}}</p>
       <button @click="addList">新增list項目</button>
     </div>
+
+    <!-- v:bind v-on 綁定 data -->
+    <br>
+      
+     <div id="vbindvondata">
+        <label for="">vbindvondata</label>
+        
+        <input type="text" :[attr]="value" @[event]="changeHolder">
+     </div>
 
     <script src="index.js"></script>
   </body>

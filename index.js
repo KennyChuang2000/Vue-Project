@@ -20,3 +20,19 @@ const vonce = Vue.createApp({
     },
 });
 vonce.mount("#vonce");
+
+const vbindvondata=Vue.createApp({
+    data(){
+        return {
+            attr : "placeholder",
+            value: "請輸入文字",
+            event : "change",
+        }
+    },
+    methods : {
+        changeHolder(){
+            console.log("input發生改變")
+        }
+    }
+});
+vbindvondata.mount("#vbindvondata");
