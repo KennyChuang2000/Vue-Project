@@ -21,6 +21,40 @@
       <button @click="addList">新增list項目</button>
     </div>
 
+    <!-- advance_v-for  -->
+    <div id="advance_v-for">
+      <ul>
+        <li v-for="value in blogPost">{{value}}</li>
+      </ul>
+
+      <ul>
+        <li v-for="(value,name,index) in blogPost">
+          {{index}},{{name}}{{value}}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">{{todo.id}}{{todo.text}}</li>
+      </ul>
+      <button @click="changeBlogPost">變更blogPost順序</button>
+
+      <ul>
+        <li v-for="n in  10" :key="n">
+          {{n}}.{{n % 2 === 0 ? '偶數' : '奇數'}}
+        </li>
+      </ul>
+    </div>
+
+    <div id="test-key-diff">
+      <h3>❌ 沒有 :key，輸入框可能錯亂</h3>
+      <button @click="swap">交換順序</button>
+      <ul>
+        <li v-for="item in items">
+          <input v-model="item.text" />
+        </li>
+      </ul>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
