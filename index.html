@@ -55,6 +55,7 @@
       </ul>
     </div>
 
+    <!-- template標籤避免製造多餘ｄｉｖ -->
     <div id="template">
       <h3>template</h3>
       <template v-if="show">
@@ -62,6 +63,16 @@
         <p>使用template標籤不會顯示多餘div</p>
       </template>
       <button @click="show = !show">切換template顯示</button>
+    </div>
+    <!-- method 傳遞參數&綁定多個事件 -->
+    <div id="eventParameter">
+      <div>
+        <ul>
+          <li v-for="todo in todos" :key="todo.id" @click="handleClick(todo.id, $event),showContent(todo.content)">
+            {{todo.content}}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <script src="index.js"></script>

@@ -75,3 +75,24 @@ const template = Vue.createApp({
 });
 template.mount("#template");
 
+const eventParameter = Vue.createApp({
+    data() {
+        return {
+            todos: [
+                { id: 1, content: "學習 Vue.js" },
+                { id: 2, content: "學習 Vue Router" },
+                { id: 3, content: "學習 Vuex" }
+            ],
+        };
+    },
+    methods: {
+        handleClick(id, e) {
+            alert(id + "," + e.clientX + "," + e.clientY);
+        },
+        showContent(content) {
+            alert(content);
+        },
+    }
+});
+eventParameter.mount("#eventParameter");
+
