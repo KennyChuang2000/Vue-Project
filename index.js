@@ -65,3 +65,13 @@ Vue.createApp({
         }
     }
 }).mount('#test-key-diff');
+
+const template = Vue.createApp({
+    data() {
+        return {
+            show: true
+        };
+    },
+});
+template.mount("#template");
+

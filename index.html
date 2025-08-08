@@ -55,6 +55,15 @@
       </ul>
     </div>
 
+    <div id="template">
+      <h3>template</h3>
+      <template v-if="show">
+        <h3>這是template</h1>
+        <p>使用template標籤不會顯示多餘div</p>
+      </template>
+      <button @click="show = !show">切換template顯示</button>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
