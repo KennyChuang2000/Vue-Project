@@ -91,12 +91,21 @@
 
     <!-- event modifier  self、stop、prevent、once、capture -->
     <div id="eventModifier">
-      <h3>event modifier</h3>
+      <h3>事件修飾符</h3>
       <a href="https://google.com" @click.prevent>點擊我</a>
       <ul @click="handleUlClick">
         <li @click.stop="handleLiClick">1</li>
         <li>2</li>
       </ul>
+    </div>
+
+    <!-- 監聽鍵盤 滑鼠事件-->
+    <div id="keyboardEvent">
+      <h3>監聽鍵盤 滑鼠事件</h3>
+      <ul @mousedown.right="comments.reverse()">
+        <li v-for="content in comments">{{content}}</li>
+      </ul>
+      <input v-model="comment" @keyup.ctrl.enter="addComment" />
     </div>
 
     <script src="index.js"></script>

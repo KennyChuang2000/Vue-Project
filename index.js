@@ -124,3 +124,22 @@ const eventModifier = Vue.createApp({
 });
 eventModifier.mount("#eventModifier");
 
+const keyboardEvent = Vue.createApp({
+    data() {
+        return {
+            comments: [
+                1, 2, 3, 4, 5
+            ],
+            comment: "",
+        }
+    },
+    methods: {
+        addComment() {
+            this.comments.push(this.comment);
+            this.comment = "";
+        }
+    },
+});
+keyboardEvent.mount("#keyboardEvent");
+
+
