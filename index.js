@@ -112,3 +112,15 @@ const eventParameter = Vue.createApp({
 });
 eventParameter.mount("#eventParameter");
 
+const eventModifier = Vue.createApp({
+    methods: {
+        handleUlClick() {
+            alert("點擊了ul");
+        },
+        handleLiClick() {
+            alert("點擊了li");
+        }
+    }
+});
+eventModifier.mount("#eventModifier");
+

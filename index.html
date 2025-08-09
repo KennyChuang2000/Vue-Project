@@ -22,13 +22,12 @@
     </div>
 
     <!-- v:bind v-on 綁定 data -->
-    <br>
-      
-     <div id="vbindvondata">
-        <label for="">vbindvondata</label>
-        
-        <input type="text" :[attr]="value" @[event]="changeHolder">
-     </div>
+    <br />
+
+    <div id="vbindvondata">
+      <label for="">vbindvondata</label>
+
+      <input type="text" :[attr]="value" @[event]="changeHolder" />
     </div>
 
     <!-- advance_v-for  -->
@@ -69,20 +68,35 @@
     <div id="template">
       <h3>template</h3>
       <template v-if="show">
-        <h3>這是template</h1>
+        <h3>這是template</h3>
         <p>使用template標籤不會顯示多餘div</p>
       </template>
       <button @click="show = !show">切換template顯示</button>
     </div>
+
     <!-- method 傳遞參數&綁定多個事件 -->
     <div id="eventParameter">
       <div>
         <ul>
-          <li v-for="todo in todos" :key="todo.id" @click="handleClick(todo.id, $event),showContent(todo.content)">
+          <li
+            v-for="todo in todos"
+            :key="todo.id"
+            @click="handleClick(todo.id, $event),showContent(todo.content)"
+          >
             {{todo.content}}
           </li>
         </ul>
       </div>
+    </div>
+
+    <!-- event modifier  self、stop、prevent、once、capture -->
+    <div id="eventModifier">
+      <h3>event modifier</h3>
+      <a href="https://google.com" @click.prevent>點擊我</a>
+      <ul @click="handleUlClick">
+        <li @click.stop="handleLiClick">1</li>
+        <li>2</li>
+      </ul>
     </div>
 
     <script src="index.js"></script>
