@@ -142,4 +142,14 @@ const keyboardEvent = Vue.createApp({
 });
 keyboardEvent.mount("#keyboardEvent");
 
+const formModifiers = Vue.createApp({
+    data() {
+        return {
+            username: "",
+            year: 2000,
+        }
+    }
+});
+formModifiers.mount("#formModifiers");
+
 

@@ -108,6 +108,16 @@
       <input v-model="comment" @keyup.ctrl.enter="addComment" />
     </div>
 
+    <!-- 表單修飾符 .lazy .number .trim   -->
+    <div id="formModifiers">
+      <h3>表單修飾符</h3>
+      <input v-model.lazy="username" placeholder="lazy" />
+      <p>lazy:{{username}}</p>
+      <input v-model.lazy.trim="username" placeholder="trim" />
+      <p>trim:{{username}}</p>
+      <input v-model.number="year" placeholder="number" />
+      <p>number:{{typeof year}}</p>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
