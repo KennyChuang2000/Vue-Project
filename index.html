@@ -118,6 +118,11 @@
       <input v-model.number="year" placeholder="number" />
       <p>number:{{typeof year}}</p>
     </div>
+    <!-- 可將 vueAndJs.mount("#vueAndJs"); 設為js 變數 用js變數操控data、compute、methods(適合Vue與傳統js同時使用的狀況)-->
+    <div id="vueAndJs">
+      <h3>Vue與傳統js同時使用</h3>
+      <p>data:{{greetings}}</p>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

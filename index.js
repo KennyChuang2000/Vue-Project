@@ -152,4 +152,27 @@ const formModifiers = Vue.createApp({
 });
 formModifiers.mount("#formModifiers");
 
+const vueAndJs = Vue.createApp({
+    data() {
+        return {
+            message: "Hello Vue.js!",
+            name: "VueAndJs",
+        }
+    },
+    computed: {
+        greetings() {
+            return `${this.name} 說: ${this.message}`;
+        }
+    },
+    methods: {
+        changeMessage(message) {
+            this.message = message;
+        },
+        changeName(name) {
+            this.name = name;
+        }
+    },
+});
+const vm = vueAndJs.mount("#vueAndJs");
+
 
