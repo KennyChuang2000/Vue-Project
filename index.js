@@ -175,4 +175,22 @@ const vueAndJs = Vue.createApp({
 });
 const vm = vueAndJs.mount("#vueAndJs");
 
+const lifecycle = Vue.createApp({
+    data() {
+        return {
+            posts: [],
+        }
+    },
+    methods: {
+        async fetchPosts() {
+            const res = await fetch("./posts.json");
+            const postsData = await res.json();
+            this.posts = postsData;
+        }
+    },
+    created() {
+        this.fetchPosts();
+    }
+});
+lifecycle.mount("#lifecycle");
 
