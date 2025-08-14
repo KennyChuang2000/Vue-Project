@@ -1,9 +1,23 @@
-const vhtml = Vue.createApp({
+const stringLengthCount = Vue.createApp({});
+
+stringLengthCount.component('string-length-count', {
+    template: `
+        <div>
+            <input v-model="content"/>
+            <p>字串長度: {{count}}</p>
+        </div>
+    `,
     data() {
         return {
-            content: `<p>這是一段<span style="color:red;">紅色文字</span></p>`
+            content: "",
+        };
+    },
+    computed: {
+        count() {
+            return this.content.length;
         }
     }
-});
-vhtml.mount("#vhtml");
+})
+
+const vm = stringLengthCount.mount('#stringLengthCount');
 
