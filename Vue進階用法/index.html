@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="lib/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- v-html -->
+    <div id="vhtml">
+      <label>v-html 顯示html content內容</label>
+      <article id="htmlContent" v-html="content"></article>
+    </div>
+
+    <!-- v-once -->
+    <div id="vonce">
+      <p v-once>vonce只讀取一次 list.length={{list.length}}</p>
+      <p>非vonce list.length={{list.length}}</p>
+      <button @click="addList">新增list項目</button>
+    </div>
+
+    <!-- v:bind v-on 綁定 data -->
+    <br />
+
+    <div id="vbindvondata">
+      <label for="">vbindvondata</label>
+
+      <input type="text" :[attr]="value" @[event]="changeHolder" />
+    </div>
+
+    <!-- advance_v-for  -->
+    <div id="advance_v-for">
+      <ul>
+        <li v-for="value in blogPost">{{value}}</li>
+      </ul>
+
+      <ul>
+        <li v-for="(value,name,index) in blogPost">
+          {{index}},{{name}}{{value}}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">{{todo.id}}{{todo.text}}</li>
+      </ul>
+      <button @click="changeBlogPost">變更blogPost順序</button>
+
+      <ul>
+        <li v-for="n in  10" :key="n">
+          {{n}}.{{n % 2 === 0 ? '偶數' : '奇數'}}
+        </li>
+      </ul>
+    </div>
+
+    <div id="test-key-diff">
+      <h3>❌ 沒有 :key，輸入框可能錯亂</h3>
+      <button @click="swap">交換順序</button>
+      <ul>
+        <li v-for="item in items">
+          <input v-model="item.text" />
+        </li>
+      </ul>
+    </div>
+
+    <!-- template標籤避免製造多餘ｄｉｖ -->
+    <div id="template">
+      <h3>template</h3>
+      <template v-if="show">
+        <h3>這是template</h3>
+        <p>使用template標籤不會顯示多餘div</p>
+      </template>
+      <button @click="show = !show">切換template顯示</button>
+    </div>
+
+    <!-- method 傳遞參數&綁定多個事件 -->
+    <div id="eventParameter">
+      <div>
+        <ul>
+          <li
+            v-for="todo in todos"
+            :key="todo.id"
+            @click="handleClick(todo.id, $event),showContent(todo.content)"
+          >
+            {{todo.content}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- event modifier  self、stop、prevent、once、capture -->
+    <div id="eventModifier">
+      <h3>事件修飾符</h3>
+      <a href="https://google.com" @click.prevent>點擊我</a>
+      <ul @click="handleUlClick">
+        <li @click.stop="handleLiClick">1</li>
+        <li>2</li>
+      </ul>
+    </div>
+
+    <!-- 監聽鍵盤 滑鼠事件-->
+    <div id="keyboardEvent">
+      <h3>監聽鍵盤 滑鼠事件</h3>
+      <ul @mousedown.right="comments.reverse()">
+        <li v-for="content in comments">{{content}}</li>
+      </ul>
+      <input v-model="comment" @keyup.ctrl.enter="addComment" />
+    </div>
+
+    <!-- 表單修飾符 .lazy .number .trim   -->
+    <div id="formModifiers">
+      <h3>表單修飾符</h3>
+      <input v-model.lazy="username" placeholder="lazy" />
+      <p>lazy:{{username}}</p>
+      <input v-model.lazy.trim="username" placeholder="trim" />
+      <p>trim:{{username}}</p>
+      <input v-model.number="year" placeholder="number" />
+      <p>number:{{typeof year}}</p>
+    </div>
+    <!-- 可將 vueAndJs.mount("#vueAndJs"); 設為js 變數 用js變數操控data、compute、methods(適合Vue與傳統js同時使用的狀況)-->
+    <div id="vueAndJs">
+      <h3>Vue與傳統js同時使用</h3>
+      <p>data:{{greetings}}</p>
+    </div>
+
+    <!-- 生命週期 create,mounted -->
+    <div id="lifecycle">
+      <h3>生命週期</h3>
+      <ul>
+        <li v-for="post in posts" :key="post.id">{{post.id}}.{{post.title}}</li>
+      </ul>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
