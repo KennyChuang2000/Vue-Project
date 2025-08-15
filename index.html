@@ -10,13 +10,18 @@
   <body>
     <!-- 組件可在同一頁面重複利用，不互相影響 -->
     <div id="stringLengthCount">
-      <h2>字串長度計算</h2>
+      
       <p>組件可在同一頁面重複利用，不互相影響</p>
       <div>
         <string-length-count></string-length-count>
         <string-length-count></string-length-count>
         <string-length-count></string-length-count>
       </div>
+      <p>一組件內可使用其他組件</p>
+      <div>
+        <string-length-count-word></string-length-count-word>
+      </div>
+
     </div>
 
     <script src="index.js"></script>
