@@ -1,17 +1,17 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script >
+import WordCount from './components/WordCount.vue'
+export default {
+  components: { WordCount }
+}
 </script>
+
+
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h1>字數統計</h1>
+    <WordCount></WordCount>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
