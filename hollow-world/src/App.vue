@@ -1,8 +1,10 @@
 <script>
 import WordCount from './components/WordCount.vue'
 import MessageItem from './components/MessageItem.vue'
+import PropType from './components/PropType.vue'
+import TypeValidation from './components/TypeValidation.vue'
 export default {
-  components: { WordCount, MessageItem },
+  components: { WordCount, MessageItem, PropType, TypeValidation },
   data() {
     return {
       messages: [
@@ -38,6 +40,16 @@ export default {
     <h3>v-bind="message" 等價 :sender="message.sender" :time="message.time" :msg="message.msg"</h3>
     <MessageItem v-for="message in messages" :key="message.id" v-bind="message"></MessageItem>
   </div>
+
+  <div>
+    <h1>PropType</h1>
+    <PropType :num="10" :bool="true" :obj="{ name: 'kenny' }" :array="[1, 2, 3]"></PropType>
+    <h3>無傳遞屬性</h3>
+    <PropType></PropType>
+    <h3>驗證</h3>
+    <TypeValidation name="Kenny" :age="-20"></TypeValidation>
+  </div>
+
 </template>
 
 <style scoped>
